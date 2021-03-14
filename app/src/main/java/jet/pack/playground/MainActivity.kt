@@ -1,17 +1,22 @@
 package jet.pack.playground
 
 import android.os.Bundle
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import dev.chrisbanes.accompanist.insets.ProvideWindowInsets
 import jet.pack.playground.ui.theme.JetPlaygroundTheme
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // This app draws behind the system bars, so we want to handle fitting system windows
+//         WindowCompat.setDecorFitsSystemWindows(window, false)
+
         setContent {
             JetPlaygroundTheme {
                 MyApp()
@@ -20,11 +25,12 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-
 @Composable
 fun MyApp() {
-    Surface(color = MaterialTheme.colors.background) {
-        AppNavGraph()
+    ProvideWindowInsets {
+        Surface(color = MaterialTheme.colors.background) {
+            AppNavGraph()
+        }
     }
 }
 
