@@ -1,6 +1,5 @@
 package jet.pack.playground.ui.features.home
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.BottomNavigation
@@ -25,8 +24,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigate
+import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import jet.pack.playground.ui.features.home.feed.HomeFeedScreen
+import jet.pack.playground.ui.features.home.features.HomeFeatureScreen
 import jet.pack.playground.ui.features.home.settings.HomeSettingsScreen
 import jet.pack.playground.ui.theme.JetPlaygroundTheme
 
@@ -75,7 +75,7 @@ fun HomeScreen() {
         }
     ) {
         NavHost(navController, startDestination = NavRoutes.Feed) {
-            composable(NavRoutes.Feed) { HomeFeedScreen() }
+            composable(NavRoutes.Feed) { HomeFeatureScreen() }
             composable(NavRoutes.Settings) { HomeSettingsScreen() }
         }
     }
