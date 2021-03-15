@@ -1,4 +1,4 @@
-package jet.pack.playground.ui.features.home.features
+package jet.pack.playground.ui.home.features
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues

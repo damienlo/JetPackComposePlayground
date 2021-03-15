@@ -1,5 +1,6 @@
-package jet.pack.playground.ui.features.home.features
+package jet.pack.playground.ui.home.features
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.tooling.preview.Preview
@@ -36,6 +37,7 @@ private class Actions(navController: NavHostController) {
     }
 }
 
+@ExperimentalFoundationApi
 @Composable
 fun HomeFeaturesNavGraph(startDestination: String = Routes.AllFeatures) {
     val navController = rememberNavController()
@@ -50,11 +52,13 @@ fun HomeFeaturesNavGraph(startDestination: String = Routes.AllFeatures) {
     }
 }
 
+@ExperimentalFoundationApi
 @Composable
 fun HomeFeatureScreen() {
     HomeFeaturesNavGraph()
 }
 
+@ExperimentalFoundationApi
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun HomeFeatureScreenLightPreview() {
@@ -63,6 +67,7 @@ fun HomeFeatureScreenLightPreview() {
     }
 }
 
+@ExperimentalFoundationApi
 @Preview("Dark Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun HomeFeatureScreenDarkPreview() {

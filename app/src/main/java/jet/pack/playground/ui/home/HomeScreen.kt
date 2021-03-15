@@ -1,5 +1,6 @@
-package jet.pack.playground.ui.features.home
+package jet.pack.playground.ui.home
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,8 +28,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
-import jet.pack.playground.ui.features.home.features.HomeFeatureScreen
-import jet.pack.playground.ui.features.home.settings.HomeSettingsScreen
+import jet.pack.playground.ui.home.features.HomeFeatureScreen
+import jet.pack.playground.ui.home.settings.HomeSettingsScreen
 import jet.pack.playground.ui.theme.JetPlaygroundTheme
 
 
@@ -48,6 +49,7 @@ private enum class BottomNavigationScreens(
     }
 }
 
+@ExperimentalFoundationApi
 @Composable
 fun HomeScreen() {
     val navController = rememberNavController()
@@ -115,6 +117,7 @@ private class NavActions(private val navController: NavHostController) {
     }
 }
 
+@ExperimentalFoundationApi
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun LightPreview() {
@@ -123,6 +126,7 @@ fun LightPreview() {
     }
 }
 
+@ExperimentalFoundationApi
 @Preview("Dark Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun DarkPreview() {

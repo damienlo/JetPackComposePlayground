@@ -1,4 +1,4 @@
-package jet.pack.playground.ui.features.home.settings
+package jet.pack.playground.ui.home.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
