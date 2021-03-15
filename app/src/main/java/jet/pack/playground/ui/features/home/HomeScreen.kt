@@ -1,7 +1,9 @@
 package jet.pack.playground.ui.features.home
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -24,7 +26,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigate
-import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import jet.pack.playground.ui.features.home.features.HomeFeatureScreen
 import jet.pack.playground.ui.features.home.settings.HomeSettingsScreen
@@ -73,10 +74,12 @@ fun HomeScreen() {
                 }
             }
         }
-    ) {
-        NavHost(navController, startDestination = NavRoutes.Feed) {
-            composable(NavRoutes.Feed) { HomeFeatureScreen() }
-            composable(NavRoutes.Settings) { HomeSettingsScreen() }
+    ) { paddingValues ->
+        Box(modifier = Modifier.padding(paddingValues)) {
+            NavHost(navController, startDestination = NavRoutes.Feed) {
+                composable(NavRoutes.Feed) { HomeFeatureScreen() }
+                composable(NavRoutes.Settings) { HomeSettingsScreen() }
+            }
         }
     }
 }

@@ -1,16 +1,17 @@
 package jet.pack.playground.ui.features.layout
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.GridCells
+import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -26,14 +27,15 @@ import jet.pack.playground.ui.features.layout.model.DummyItem
 import jet.pack.playground.ui.features.layout.model.dummyList
 import jet.pack.playground.ui.theme.JetPlaygroundTheme
 
+@ExperimentalFoundationApi
 @Composable
-fun ListVertical() {
-    LazyColumn(
-        modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(16.dp)
+fun ListGrid() {
+    LazyVerticalGrid(
+        cells = GridCells.Adaptive(96.dp),
+        contentPadding = PaddingValues(8.dp),
     ) {
-        itemsIndexed(dummyList) { index, item ->
-            Box(Modifier.padding(top = if (index == 0) 0.dp else 8.dp)) {
+        items(dummyList) { item ->
+            Box(modifier = Modifier.padding(top = 8.dp, bottom = 4.dp, start = 8.dp, end = 8.dp)) {
                 CardItem(item)
             }
         }
@@ -48,16 +50,18 @@ private fun CardItem(item: DummyItem, modifier: Modifier = Modifier) {
         elevation = 0.dp,
         backgroundColor = MaterialTheme.colors.surface
     ) {
-        Row(
-            modifier = Modifier.fillMaxSize(),
-            verticalAlignment = Alignment.CenterVertically
+        Column(
+            modifier = modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             PlaygroundImage(
                 uri = item.imageUrl,
-                modifier = Modifier.size(96.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(1f),
                 contentDescription = item.name
             )
-            Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = item.name,
                 textAlign = TextAlign.Center,
@@ -73,7 +77,7 @@ private fun CardItem(item: DummyItem, modifier: Modifier = Modifier) {
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
 @Composable
-fun LightPreviewCard() {
+fun LightPreviewGridListItem() {
     JetPlaygroundTheme {
         CardItem(dummyList.first())
     }
@@ -81,7 +85,7 @@ fun LightPreviewCard() {
 
 @Preview("Dark Theme", widthDp = 360, heightDp = 640)
 @Composable
-fun DarkPreviewCard() {
+fun DarkPreviewGridListItem() {
     JetPlaygroundTheme(darkTheme = true) {
         CardItem(dummyList.first())
     }

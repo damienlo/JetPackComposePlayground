@@ -68,6 +68,7 @@ dependencies {
     implementation Libs.AndroidX.Compose.iconsExtended
     implementation Libs.AndroidX.Compose.tooling
 
+    implementation Libs.Accompanist.coil
     implementation Libs.Accompanist.insets
 
     implementation Libs.AndroidX.ComposeNavigation.navigation
